@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Klasifikasi Penyakit Tanaman</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="login-container">
+            <img src="/static/logo.png" alt="Logo">
+            <h2>Masuk</h2>
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <input type="text" name="username" class="form-control" placeholder="Nama Pengguna" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Kata Sandi" required>
+                </div>
+                <button type="submit">Masuk</button>
+            </form>
+            <div class="additional-options mt-3">
+                <a href="#" class="text-secondary">Lupa Password?</a>
+                <p class="mt-3">Login with Social Accounts</p>
+                <div class="social-icons">
+                    <a href="https://accounts.google.com/signin"><img src="/static/icons/google.png" alt="Google"></a>
+                    <a href="https://twitter.com/login"><img src="/static/icons/twitter.png" alt="Twitter"></a>
+                    <a href="https://github.com/login"><img src="/static/icons/github.png" alt="GitHub"></a>
+                </div>
+                <p class="mt-3">Don't have an Account? <a href="/signup" class="text-primary">SIGN UP</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Tambahkan efek fokus pada input
+        const inputs = document.querySelectorAll('.form-group input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.style.transform = 'scale(1.02)';
+                input.style.transition = 'transform 0.2s ease';
+            });
+            input.addEventListener('blur', () => {
+                input.style.transform = 'scale(1)';
+            });
+        });
+
+        // Efek ripple pada klik tombol
+        const button = document.querySelector('button');
+        button.addEventListener('click', (e) => {
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            ripple.style.left = `${e.clientX - button.offsetLeft}px`;
+            ripple.style.top = `${e.clientY - button.offsetTop}px`;
+            button.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+</script>
